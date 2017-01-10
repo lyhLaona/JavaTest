@@ -1,0 +1,128 @@
+<div id="popup_his" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div ms-controller="checkorderCtrl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel"><i class="icon-search"></i>工单:{{checkOrderInfo.orderCd}}</h3>
+        </div>
+        <!--modal-body-->
+        <div class="modal-body">
+            <ul class="nav nav-tabs mb-30 mt--10">
+                <li class="active"><a href="#tab1" data-toggle="tab">告警信息详情</a></li>
+                <li><a href="#tab2" data-toggle="tab">历史信息</a></li>
+            </ul>
+            <!--content_module-->
+            <div class="content_module_box mt-f15">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <table class="table table-striped table-hover table-bordered poptb">
+                            <thead>
+                                <tr>
+                                    <th width="15%">
+                                        <div class="c999 text-r">告警模块:</div>
+                                    </th>
+                                    <th width="35%">{{checkOrderInfo.alarmModule}}</th>
+                                    <th width="15%">
+                                        <div class="c999 text-r">告警指标：</div>
+                                    </th>
+                                    <th width="35%">{{checkOrderInfo.kpiName}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="c999 text-r">告警日期:</div>
+                                    </td>
+                                    <td>{{checkOrderInfo.alarmDate}}</td>
+                                    <td>
+                                        <div class="c999 text-r">指标值：</div>
+                                    </td>
+                                    <td>{{checkOrderInfo.indiVal}}万户</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c999 text-r">告警值:</div>
+                                    </td>
+                                    <td>{{checkOrderInfo.alarmVal}}</td>
+                                    <td>
+                                        <div class="c999 text-r">告警区域：</div>
+                                    </td>
+                                    <td>{{checkOrderInfo.city}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c999 text-r">告警级别:</div>
+                                    </td>
+                                    <td colspan="3">{{checkOrderInfo.alarmLevel}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c999 text-r">指标口径:</div>
+                                    </td>
+                                    <td colspan="3">{{checkOrderInfo.indiDesc}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c999 text-r">指标规则:</div>
+                                    </td>
+                                    <td colspan="3">{{checkOrderInfo.indiRule}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane b2sc his-mod" id="tab2">
+                        <h1 class="fa fa-clock-o text-green f48 ml-40"></h1>
+                        <ul class="his-msg" ms-repeat="historylog">
+                            <li class="his-date">
+                                <div class="f14">{{el.optime | date("yyyy-MM-dd")}}</div>
+                                <div class="c999">{{el.optime | date("HH:mm:ss")}}</div>
+                                <i class="fa fa-dot-circle-o text-green f16 pop-timeline"></i>
+                            </li>
+                            <li class="his-contain">
+                                <div class="his-content his-boc-green">                                                                                              
+                                <div class="his-head"><span class="fl"><i class="fa fa-gavel fw mr-5"></i>
+	                                <span class="f14" ms-if="el.tmresult==1">派发工单</span>
+	                                <span class="f14" ms-if="el.tmresult==2">签收工单</span>
+	                                <span class="f14" ms-if="el.tmresult==3">处理工单</span>
+	                                <span class="f14" ms-if="el.tmresult==4">转发工单</span>
+	                            </span></div>
+                                    <div class="form-horizontal form-condensed form_display">
+                                        <div class="control-group">
+                                            <label class="control-label">操作人：</label>
+                                            <div class="controls">{{el.handler}}</div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">接收人：</label>
+                                            <div class="controls">{{el.sendee}}</div>
+                                        </div>
+<!--                                         <div class="control-group"> -->
+<!--                                             <label class="control-label">抄送人：</label> -->
+<!--                                             <div class="controls">{{el.carboncopy}}</div> -->
+<!--                                         </div> -->
+                                        <div class="control-group">
+                                            <label class="control-label">说明：</label>
+                                            <div class="controls">{{el.desc}}</div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">处理意见：</label>
+                                            <div class="controls">{{el.tmopinion}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--End content_module-->
+        </div>
+        <!--End "modal-body"-->
+        <div class="modal-footer">
+            <div class="form-inline">
+                <button class="btn btn-primary btn-middle mr-10" data-dismiss="modal" aria-hidden="true"><i class="icon-search"></i>确 定</button>
+                <button class="btn btn-middle" data-dismiss="modal" aria-hidden="true">取 消</button>
+            </div>
+        </div>
+   </div>
+</div>
